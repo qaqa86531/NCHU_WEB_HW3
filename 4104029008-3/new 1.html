@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>履歷表</title>
+	<script src='./main.js' type='text/javascript'></script>
+    <style>
+    table, th, td {
+    border: 1px solid red;
+	padding:20px;}
+  </style>
+  </head>
+  <body>
+    <form name="form1">
+        姓名：<input size=10 maxlength=20 type="text" id ="username" name="username" placeholder="請輸入姓名" /><br>
+        生日：<input size=10 maxlength=20 type="text" name="birthday" placeholder="請輸入生日" /><br>
+        <input type="radio" name="sex" value="男" checked> 男<br>
+        <input type="radio" name="sex" value="女"> 女<br>
+        <input type="checkbox" name="hobby" value="badminton" >羽球
+        <input type="checkbox" name="hobby" value="basketball">籃球
+        <input type="checkbox" name="hobby" value="reading">閱讀
+		<input type="checkbox" name="hobby" value="eating">吃
+		<input type="checkbox" name="hobby" value="sleeping">睡
+        <br>
+        自傳:<br>
+		<textarea name="note" cols="50" rows="10"></textarea>
+        <br><br>
+    <input type="button" value="送出" onClick="test()">
+    <input type="reset" value="重新輸入" onclick="b()">
+
+        <br><br>
+    </form>
+
+    <p id="output"></p>
+
+    <br><br>
+    <div id="table1"></div>
+
+    <script type="text/javascript">
+	
+
+      function test(){
+	  table1.innerHTML = "";
+        var output = document.getElementById("output");
+        var l = document.getElementById("l");
+        var m = document.getElementById("m");
+        var n = document.getElementById("n");
+        var o = document.getElementById("o");
+        var p = document.getElementById("p");
+        var username =  document.getElementById("username").value;
+        var bd = document.form1.birthday.value;
+        var sex = document.form1.sex.value;
+        var hobby = document.form1.hobby[0].value;
+        var hobby1 = document.form1.hobby[1].value;
+        var hobby2 = document.form1.hobby[2].value;
+		var hobby3 = document.form1.hobby[3].value;
+		var hobby4 = document.form1.hobby[4].value;
+        var note = document.form1.note.value;
+        if(Boolean(document.form1.hobby[0].checked)==true){var a=hobby}
+        else {var a = ""}
+        if(Boolean(document.form1.hobby[1].checked)==true){var b=hobby1}
+        else {var b = ""}
+        if(Boolean(document.form1.hobby[2].checked)==true){var c=hobby2}
+        else {var c = ""}
+		if(Boolean(document.form1.hobby[3].checked)==true){var d=hobby3}
+        else {var d = ""}
+		if(Boolean(document.form1.hobby[4].checked)==true){var e=hobby4}
+        else {var e = ""}
+		alert("姓名:" + username + "\n生日 : " + bd + "\n性別 : " + sex +  "\n興趣 : " + a + "\n" + b + "\n" + c + "\n" + d + "\n" + e + "\n 自傳 : " + note );
+
+	   var objNode = document.getElementById("table1");
+	   var createtable = document.createElement("table");
+	   var tr = document.createElement("tr");
+	   var th1 = document.createElement("th");
+	   var th2 = document.createElement("th");
+	   var th3 = document.createElement("th");
+	   var th4 = document.createElement("th");
+	   var th5 = document.createElement("th");
+	   var tr2 = document.createElement("tr");
+	   var td1 = document.createElement("td");
+	   var td2 = document.createElement("td");
+	   var td3 = document.createElement("td");
+	   var td4 = document.createElement("td");
+	   var td5 = document.createElement("td");
+	   
+	   
+	   
+	   var str1 = "姓名";
+	   var Node1 = document.createTextNode(str1);
+	   var str2 = "生日";
+	   var Node2 = document.createTextNode(str2);
+	   var str3 = "性別";
+	   var Node3 = document.createTextNode(str3);
+	   var str4 = "興趣";
+	   var Node4 = document.createTextNode(str4);
+	   var str5 = "自傳";
+	   var Node5 = document.createTextNode(str5);
+	   var Node6 = document.createTextNode(username);
+	   var Node7 = document.createTextNode(bd);
+	   var Node8 = document.createTextNode(sex);
+	   var Node9 = document.createTextNode(a + "\n" + b + "\n"+ c + "\n" + d + "\n" + e);
+	   var Node10 = document.createTextNode(note);
+	   objNode.appendChild(createtable);
+	   createtable.appendChild(tr);
+	   tr.appendChild(th1);
+	   tr.appendChild(th2);
+	   tr.appendChild(th3);
+	   tr.appendChild(th4);
+	   tr.appendChild(th5);
+	   th1.appendChild(Node1);
+	   th2.appendChild(Node2);
+	   th3.appendChild(Node3);
+	   th4.appendChild(Node4);
+	   th5.appendChild(Node5);
+
+
+
+	   createtable.appendChild(tr2);
+	   tr2.appendChild(td1);
+	   tr2.appendChild(td2);
+	   tr2.appendChild(td3);
+	   tr2.appendChild(td4);
+	   tr2.appendChild(td5);
+	   td1.appendChild(Node6);
+	   td2.appendChild(Node7);
+	   td3.appendChild(Node8);
+	   td4.appendChild(Node9);
+	   td5.appendChild(Node10);
+
+		
+		var hide = document.createElement("button");
+		hide.setAttribute("id","hidebutton");
+		var small= document.createElement("button");
+		small.setAttribute("id","smallbutton");
+		var large= document.createElement("button");
+		large.setAttribute("id","largebutton");
+		var qq = document.createTextNode("隱藏表格");
+		var aa = document.createTextNode("縮小字體");
+		var zz = document.createTextNode("放大字體");
+		objNode.appendChild(hide);
+		objNode.appendChild(small);
+		objNode.appendChild(large);
+		
+
+		hide.appendChild(qq);
+		small.appendChild(aa);
+		large.appendChild(zz);
+		
+
+
+		var hidebutton = document.getElementById("hidebutton");
+		hidebutton.onclick = function(){
+		var h = document.getElementById("table1");
+		if (h.style.display == "none") h.style.display = "";
+		else h.style.display = "none";
+		}
+		var smallbutton = document.getElementById("smallbutton");
+		smallbutton.onclick = function(){
+		var s = document.getElementById("table1");
+		table1.style.fontSize = "10pt";
+		}
+		var largebutton = document.getElementById("largebutton");
+		largebutton.onclick = function(){
+		var l = document.getElementById("table1");
+		table1.style.fontSize = "40pt";
+					 }
+					 
+					 
+					 
+					 
+					 
+					 
+
+			}
+			
+		function b(){
+		table1.innerHTML = "";
+	}
+    </script>
+	
+
+  </body>
+</html>
